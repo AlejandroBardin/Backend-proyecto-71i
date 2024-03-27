@@ -18,7 +18,7 @@ const ProductoSchema = Schema({
 
 	descripcion: {
 		type: String,
-		required: true,
+		required:true,
 	},
 
 	categoria: {

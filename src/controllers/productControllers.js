@@ -13,7 +13,7 @@ const getProductos = async (req, res) => {
 
 const createProducto = async (req, res) => {
 	try {
-		const { name, precio, cantidad, descripcion } = req.body;
+		const { name, precio, cantidad, descripcion, categoria, imagen } = req.body;
 
 		const productoExistente = await Producto.findOne({ name });
 		if (productoExistente) {
@@ -25,6 +25,8 @@ const createProducto = async (req, res) => {
 			precio,
 			cantidad,
 			descripcion,
+			categoria,
+			imagen,
 		});
 
 		const productoGuardado = await nuevoProducto.save();
