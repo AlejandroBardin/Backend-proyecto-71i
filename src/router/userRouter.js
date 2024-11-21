@@ -16,16 +16,13 @@ const { Router } = require('express');
 
 const router = Router();
 
-router.get('/users', getUsers);
-/* router.get('/users', validarJWT, checkAdminPermission, getUsers); */
+// Registro público
+router.post('/register', validateRegister, createUser);
 
-router.post(
-	'/user-add',
-	validarJWT,
-	checkAdminPermission,
+// Solo para administradores autenticados
+router.post('/user-add', validarJWT, checkAdminPermission, createUser);
 
-	createUser
-);
+router.get('/users', validarJWT, checkAdminPermission, getUsers);
 
 router.get('/user/:id', validarJWT, checkAdminPermission, getUserById);
 
